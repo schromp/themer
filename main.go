@@ -26,6 +26,7 @@ func main() {
 
 			themer.ApplyHyprland(theme)
 			themer.ApplyNvim(theme)
+			themer.ApplyKitty(theme)
 
 			return nil
 		},

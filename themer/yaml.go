@@ -10,6 +10,7 @@ import (
 
 type Theme struct {
 	name string
+	NvimName string `yaml:"nvimName"`
 	Base00 string `yaml:"base00"`
 	Base01 string `yaml:"base01"`
 	Base02 string `yaml:"base02"`

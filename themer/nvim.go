@@ -8,13 +8,17 @@ import (
 
 func ApplyNvim(theme Theme) error {
 	configPath := os.Getenv("HOME") + "/.config/nvim/config.json"
+	themeName := theme.name
+	if theme.NvimName != "" {
+		themeName = theme.NvimName
+	}
 
 	nvimConfig, err := os.ReadFile(configPath)
 	if err != nil {
 		return err
 	}
 
-	val, jsonErr := sjson.Set(string(nvimConfig), "theme", theme.name)
+	val, jsonErr := sjson.Set(string(nvimConfig), "theme", themeName)
 	if jsonErr != nil {
 		return jsonErr
 	}
