@@ -9,7 +9,7 @@ import (
 func applyBorders(theme Theme) error {
 	activeBorders := exec.Command("hyprctl", "keyword", "general:col.active_border", fmt.Sprintf("rgb(%s) rgb(%s)", theme.Base08, theme.Base09))
 
-	activeBordersErr := activeBorders.Err
+	activeBordersErr := activeBorders.Run()
 	if activeBordersErr != nil {
 		log.Fatal(activeBordersErr)
 		return activeBordersErr
