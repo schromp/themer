@@ -46,7 +46,7 @@ func ApplyKitty(theme Theme) error {
 	var content string
 
 	content += "background #" + theme.Base00 + "\n"
-	content += "foreground #" + theme.Base08 + "\n"
+	content += "foreground #" + theme.Base05 + "\n"
 	content += "selection_background #" + theme.Base05 + "\n"
 	content += "selection_foreground #" + theme.Base00 + "\n"
 	content += "url_color #" + theme.Base04 + "\n"
