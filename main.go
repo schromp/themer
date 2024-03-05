@@ -11,8 +11,8 @@ import (
 
 func main() {
 	app := &cli.App{
-		Name:  "boom",
-		Usage: "make an explosive entrance",
+		Name:  "themer",
+		Usage: "themer <theme>",
 		Action: func(cCtx *cli.Context) error {
 			themeName := cCtx.Args().Get(0)
 			if themeName == "" {
