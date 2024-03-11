@@ -3,10 +3,17 @@ package themer
 import (
 	"fmt"
 	"os"
+	"os/exec"
 )
 
 func updateTmuxConfig() {
+	cmd := exec.Command("tmux", "source-file", os.Getenv("HOME") + "/.config/tmux/tmux.conf")
 
+	_, err := cmd.Output()
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
 }
 
 func ApplyTmux(theme Theme) error {
@@ -30,6 +37,8 @@ func ApplyTmux(theme Theme) error {
 	if writeErr != nil {
 		return writeErr
 	}
+
+	updateTmuxConfig()
 
 	return nil
 }

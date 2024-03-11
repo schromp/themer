@@ -3,6 +3,7 @@
 ## TODO:
 
 [ ] tmux
+[ ] prompt
 [ ] AGS
 [ ] tofi
 [ ] hot reload neovim
