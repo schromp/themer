@@ -28,6 +28,7 @@ func main() {
 			themer.ApplyNvim(theme)
 			themer.ApplyKitty(theme)
 			themer.ApplyTmux(theme)
+			themer.ApplyZsh(theme)
 
 			return nil
 		},
