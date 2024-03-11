@@ -2,7 +2,7 @@
 
 ## TODO:
 
-[ ] tmux
+[x] tmux
 [ ] prompt
 [ ] AGS
 [ ] tofi
