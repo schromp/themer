@@ -2,11 +2,11 @@
 
 ## TODO:
 
-[x] tmux
-[ ] prompt
-[ ] AGS
-[ ] tofi
-[ ] hot reload neovim
+- [x] tmux
+- [x] prompt
+- [ ] AGS
+- [ ] tofi
+- [ ] hot reload neovim
 
 ## Guidelines for Base16
 
