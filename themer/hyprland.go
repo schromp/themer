@@ -26,11 +26,45 @@ func applyBorders(theme Theme) error {
 	return nil
 }
 
-func ApplyHyprland(theme Theme) error {
+func applyBackground(bg string) error {
+	if bg == "solid" || bg == "transparent" {
+		err := exec.Command("hyprctl", "keyword", "decorations:blur:enabled", "false").Run()
+		if err != nil {
+			return err
+		}
+
+	} else if bg == "blur" {
+		err := exec.Command("hyprctl", "keyword", "decorations:blur:enabled", "true").Run()
+		if err != nil {
+			return err
+		}
+
+		err = exec.Command("hyprctl", "keyword", "decorations:blur:size", "8").Run()
+		if err != nil {
+			return err
+		}
+
+		err = exec.Command("hyprctl", "keyword", "decorations:blur:passes", "3").Run()
+		if err != nil {
+			return err
+		}
+
+	} else {
+		return fmt.Errorf("Invalid background type")
+	}
+	return nil
+}
+
+func ApplyHyprland(theme Theme, bg string) error {
 
 	bordersErr := applyBorders(theme)
 	if bordersErr != nil {
 		return bordersErr
+	}
+
+	bgErr := applyBackground(bg)
+	if bgErr != nil {
+		return bgErr
 	}
 
 	return nil

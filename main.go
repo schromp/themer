@@ -13,6 +13,14 @@ func main() {
 	app := &cli.App{
 		Name:  "themer",
 		Usage: "themer <theme>",
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:    "background",
+				Aliases: []string{"b"},
+				Value:   "solid",
+				Usage:   "solid, blur, transparent",
+			},
+		},
 		Action: func(cCtx *cli.Context) error {
 			themeName := cCtx.Args().Get(0)
 			if themeName == "" {
@@ -24,9 +32,11 @@ func main() {
 				return cli.Exit("Error reading theme file", 2)
 			}
 
-			themer.ApplyHyprland(theme)
-			themer.ApplyNvim(theme)
-			themer.ApplyKitty(theme)
+			background := cCtx.String("background")
+
+			themer.ApplyHyprland(theme, background)
+			themer.ApplyNvim(theme, background)
+			themer.ApplyKitty(theme, background)
 			themer.ApplyTmux(theme)
 			themer.ApplyZsh(theme)
 
