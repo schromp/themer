@@ -4,9 +4,11 @@
 
 - [x] tmux
 - [x] prompt
-- [ ] AGS
 - [ ] tofi
 - [ ] hot reload neovim
+- [ ] backgrounds
+- [ ] config file
+- [ ] macos build
 
 ## Guidelines for Base16
 
