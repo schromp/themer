@@ -39,6 +39,7 @@ func main() {
 			themer.ApplyKitty(theme, background)
 			themer.ApplyTmux(theme)
 			themer.ApplyZsh(theme)
+			themer.ApplyWalker(theme)
 
 			return nil
 		},
