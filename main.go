@@ -1,15 +1,26 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
+	"github.com/spf13/viper"
 	"github.com/urfave/cli/v2"
 
 	"schromp/themer/themer"
 )
 
 func main() {
+
+	viper.SetConfigName("themer")
+	viper.SetConfigType("toml")
+	viper.AddConfigPath("$HOME/.config/themer")
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(fmt.Errorf("Error reading config file: %w", err))
+	}
+
 	app := &cli.App{
 		Name:  "themer",
 		Usage: "themer <theme>",

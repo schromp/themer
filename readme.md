@@ -4,10 +4,9 @@
 
 - [x] tmux
 - [x] prompt
-- [ ] tofi
+- [ ] config file
 - [ ] hot reload neovim
 - [ ] backgrounds
-- [ ] config file
 - [ ] macos build
 
 ## Guidelines for Base16
