@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/spf13/viper"
 )
 
 func updateKittyConfig() {
@@ -42,6 +44,12 @@ func updateKittyConfig() {
 }
 
 func ApplyKitty(theme Theme, bg string) error {
+
+	if viper.GetBool("kitty.enable") == false {
+		return nil
+	}
+
+	configPath := viper.GetString("kitty.path")
 
 	var content string
 
@@ -88,8 +96,6 @@ func ApplyKitty(theme Theme, bg string) error {
 	content += "color15 #" + theme.Base07 + "\n"
 
 	content += "background_opacity " + opacity + "\n"
-
-	configPath := os.Getenv("HOME") + "/.config/kitty/theme.conf"
 
 	writeErr := os.WriteFile(configPath, []byte(content), 0644)
 	if writeErr != nil {

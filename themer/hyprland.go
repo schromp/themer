@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os/exec"
+
+	"github.com/spf13/viper"
 )
 
 func applyBorders(theme Theme) error {
@@ -56,6 +58,10 @@ func applyBackground(bg string) error {
 }
 
 func ApplyHyprland(theme Theme, bg string) error {
+
+	if viper.GetBool("hyprland.enable") == false {
+		return nil
+	}
 
 	bordersErr := applyBorders(theme)
 	if bordersErr != nil {

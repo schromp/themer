@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+
+	"github.com/spf13/viper"
 )
 
 type jsonConfig struct {
@@ -13,7 +15,12 @@ type jsonConfig struct {
 
 func ApplyNvim(theme Theme, bg string) error {
 
-	configPath := os.Getenv("HOME") + "/.config/nvim/config.json"
+	if viper.GetBool("nvim.enable") == false {
+		return nil
+	}
+
+	configPath := viper.GetString("nvim.path")
+	// configPath := os.Getenv("HOME") + "/.config/nvim/config.json"
 
 	themeName := theme.name
 	if theme.NvimName != "" {

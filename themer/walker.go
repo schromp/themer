@@ -1,11 +1,19 @@
 package themer
 
-import "os"
+import (
+	"os"
+
+	"github.com/spf13/viper"
+)
 
 func ApplyWalker(theme Theme) error {
-  content := GenerateGTKCSS(theme)
+	if viper.GetBool("walker.enable") == false {
+		return nil
+	}
 
-	configPath := os.Getenv("HOME") + "/.config/walker/colors.css"
+	configPath := viper.GetString("walker.path")
+
+  content := GenerateGTKCSS(theme)
 
 	writeErr := os.WriteFile(configPath, []byte(content), 0644)
 	if writeErr != nil {

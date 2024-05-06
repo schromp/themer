@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+
+	"github.com/spf13/viper"
 )
 
 func updateTmuxConfig() {
@@ -18,6 +20,12 @@ func updateTmuxConfig() {
 
 func ApplyTmux(theme Theme) error {
 
+	if viper.GetBool("tmux.enable") == false {
+		return nil
+	}
+
+	configPath := viper.GetString("tmux.path")
+
 	var content string
 
 	content = fmt.Sprintf(`
@@ -30,8 +38,6 @@ func ApplyTmux(theme Theme) error {
     set-option -g pane-active-border-style fg='#%s'
 
   `, theme.Base08, theme.Base01, theme.Base05, theme.Base0D)
-
-	configPath := os.Getenv("HOME") + "/.config/tmux/themer.conf"
 
 	writeErr := os.WriteFile(configPath, []byte(content), 0644)
 	if writeErr != nil {
