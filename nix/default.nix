@@ -15,7 +15,7 @@
 buildGoApplication {
   pname = "themer";
   version = "0.1";
-  pwd = ./.;
-  src = ./.;
+  pwd = ../.;
+  src = ../.;
   modules = ./gomod2nix.toml;
 }

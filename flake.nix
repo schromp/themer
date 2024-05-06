@@ -8,10 +8,10 @@
   inputs.gomod2nix.inputs.flake-utils.follows = "flake-utils";
 
   outputs = {
-    self,
     nixpkgs,
     flake-utils,
     gomod2nix,
+    ...
   }: (
     flake-utils.lib.eachDefaultSystem
     (system: let
@@ -21,7 +21,7 @@
       # This has no effect on other platforms.
       callPackage = pkgs.darwin.apple_sdk_11_0.callPackage or pkgs.callPackage;
     in {
-      packages.default = callPackage ./. {
+      packages.default = callPackage ./nix/default.nix {
         inherit (gomod2nix.legacyPackages.${system}) buildGoApplication;
       };
       devShells.default = callPackage ./shell.nix {
