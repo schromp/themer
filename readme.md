@@ -4,9 +4,10 @@
 
 - [x] tmux
 - [x] prompt
-- [ ] config file
+- [x] config file
+- [x] preset system
 - [ ] hot reload neovim
-- [ ] backgrounds
+- [x] backgrounds
 - [ ] macos build
 
 ## Guidelines for Base16
