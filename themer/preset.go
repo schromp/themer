@@ -10,12 +10,12 @@ func CallPreset(preset string) error {
 
   transparency := viper.GetString("presets." + preset + ".transparency")
   colorscheme := viper.GetString("presets." + preset + ".colorscheme")
-  background := viper.GetString("presets." + preset + ".background")
+  background := viper.GetString("presets." + preset + ".wallpaper")
 
   theme, err := GetBase16(colorscheme)
   
   if err != nil {
-    fmt.Errorf("Bad colorscheme name")
+    fmt.Println("Bad colorscheme name")
     return err
   }
 
