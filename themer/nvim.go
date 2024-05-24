@@ -4,13 +4,37 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/exec"
+	"regexp"
 
 	"github.com/spf13/viper"
 )
 
 type jsonConfig struct {
 	Theme        string `json:"theme"`
-	Transparency bool  `json:"transparency"`
+	Transparency bool   `json:"transparency"`
+}
+
+func hotReloadNvim(theme string) {
+
+	runtime_dir := os.Getenv("XDG_RUNTIME_DIR")
+
+	files, err := os.ReadDir(runtime_dir)
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	for _, value := range files {
+		match, _ := regexp.MatchString(`^nvim.*\.0$`, value.Name())
+		if match {
+			path := runtime_dir + "/" + value.Name()
+			reload_err := exec.Command("nvim", "--server", path, "--remote-expr", fmt.Sprintf("execute('colorscheme %s')", theme)).Run()
+			if reload_err != nil {
+				fmt.Println("Error:", reload_err)
+			}
+		}
+	}
+
 }
 
 func ApplyNvim(theme Theme, bg string) error {
@@ -51,6 +75,8 @@ func ApplyNvim(theme Theme, bg string) error {
 	if writeErr != nil {
 		return writeErr
 	}
+
+	hotReloadNvim(themeName)
 
 	return nil
 }
