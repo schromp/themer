@@ -6,9 +6,13 @@
 - [x] prompt
 - [x] config file
 - [x] preset system
-- [ ] hot reload neovim
 - [x] backgrounds
-- [ ] macos build
+- [x] hot reload neovim
+- [x] macos build
+- [ ] better error logs
+- [ ] run without config present
+- [ ] nix module
+- [ ] hyprland rounded borders and shadows
 
 ## Guidelines for Base16
 
