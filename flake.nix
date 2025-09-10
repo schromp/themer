@@ -19,7 +19,7 @@
 
       # The current default sdk for macOS fails to compile go projects, so we use a newer one for now.
       # This has no effect on other platforms.
-      callPackage = pkgs.darwin.apple_sdk_11_0.callPackage or pkgs.callPackage;
+      callPackage = pkgs.callPackage;
     in {
       packages.default = callPackage ./nix/default.nix {
         inherit (gomod2nix.legacyPackages.${system}) buildGoApplication;
