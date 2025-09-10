@@ -12,6 +12,14 @@ type Colorscheme struct {
 	Programs []string
 }
 
+func (c *Colorscheme) Set() {
+	fmt.Println("Setting colorscheme to:", c.Name)
+
+	// TODO: we probably need the following here:
+	// 1. Config file so we know which programs to set
+	// 2. Logic of colorscheme for copying the correct files
+}
+
 func GenerateColorschemes() map[string]*Colorscheme {
 
 	colorschemeList := listColorschemes()
