@@ -1,4 +1,4 @@
-package themer
+package internal
 
 func ApplyPrograms(theme Theme, transparency string, wallpaper string) {
 	ApplyHyprland(theme, transparency)

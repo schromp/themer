@@ -1,18 +1,32 @@
 # Themer - My personal theming engine
 
+## New goals for this project
+
+- Directory per colorscheme in `.config`
+- Each colorscheme directory contains base16 file aswell as custom files for programs named after these programs
+- Directory per theme which contains additional settings (e.g. rounded corners, font)
+- The application is only there to:
+    - link the files in the theme directory
+    - generate missing files from base16
+    - reloading applications
+- config file is only there to enable programs (this can be automated in nix aswell)
+
+## Planned CLI reference
+
+- `themer colorscheme list`
+- `themer colorscheme set name`
+- `themer theme list`
+- `themer theme set`
+- `themer option set name value` This can be used for things like setting transparency without changing the theme
+
+
 ## TODO:
 
-- [x] tmux
-- [x] prompt
-- [x] config file
-- [x] preset system
-- [x] backgrounds
-- [x] hot reload neovim
-- [x] macos build
+- [ ] generalizing the current project
 - [ ] better error logs
 - [ ] run without config present
 - [ ] nix module
-- [ ] hyprland rounded borders and shadows
+- [ ] some database which can store state
 
 ## Guidelines for Base16
 
