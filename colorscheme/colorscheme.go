@@ -12,9 +12,9 @@ type Colorscheme struct {
 	Programs []string
 }
 
-func generateColorschemes() map[string]*Colorscheme {
+func GenerateColorschemes() map[string]*Colorscheme {
 
-	colorschemeList := ListColorschemes()
+	colorschemeList := listColorschemes()
 	colorschemes := make(map[string]*Colorscheme)
 
 	for _, name := range colorschemeList {
@@ -27,7 +27,7 @@ func generateColorschemes() map[string]*Colorscheme {
 	return colorschemes
 }
 
-func ListColorschemes() []string {
+func listColorschemes() []string {
 
 	configDir, err := os.UserConfigDir()
 	if err != nil {

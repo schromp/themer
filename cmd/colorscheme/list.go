@@ -8,7 +8,6 @@ import (
 	"schromp/themer/colorscheme"
 )
 
-// listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "A brief description of your command",
@@ -19,8 +18,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		for _, entry := range colorscheme.ListColorschemes() {
-			fmt.Println(entry)
+		for _, entry := range colorscheme.GenerateColorschemes() {
+			fmt.Println(entry.Name)
 		}
 	},
 }
